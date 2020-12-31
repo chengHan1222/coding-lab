@@ -106,7 +106,7 @@ public class test {
 		
 		//IO.OutputById("C:\\Users\\USER\\Desktop\\12.txt", null, 12);
 		
-		IO.OutputAtLast("C:\\Users\\USER\\Desktop\\12.txt", new String[] {"1", "2"});
+		//IO.OutputAtLast("C:\\Users\\USER\\Desktop\\12.txt", new String[] {"1", "2"});
 		
 	}
 

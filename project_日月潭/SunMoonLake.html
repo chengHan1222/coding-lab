@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script language="JavaScript">
+			function ShowTime() {
+				var time = new Date();
+				document.getElementById("showTime").innerHTML = time.toLocaleString();
+				setTimeout("Showtime", 1000);
+			}
+			$(document).ready(function () {
+				$("#one").click(function () {
+					$(".title").hide();
+					$("#first").show();
+				});
+				$("#two").click(function () {
+					$(".title").hide();
+					$("#second").show();
+				});
+				$("#three").click(function () {
+					$(".title").hide();
+					$("#third").show();
+				});
+			});
+		</script>
+		<style>
+			body {
+				background-color: rgb(170, 170, 170);
+			}
+			a {
+				color: black;
+				text-decoration: none;
+			}
+			.page {
+				margin-left: 150px;
+				margin-right: 150px;
+				height: 800px;
+				background-color: white;
+			}
+			.top {
+				margin-left: 150px;
+				margin-right: 150px;
+				height: 200px;
+				text-align: center;
+			}
+			.bottom {
+				display: flex;
+				flex-direction: row;
+				position: absolute;
+				top: 850px;
+				left: 200px;
+				width: 1100px;
+			}
+			.title {
+				height: 576px;
+				width: 900px;
+				position: absolute;
+				left: 280px;
+				top: 180px;
+			}
+		</style>
+	</head>
+	<body onload="ShowTime()">
+		<div class="page">
+			<div class="top" style="display: flex; justify-content: flex-start">
+				<div class="pic_left" style="display: inline-block">
+					<a href="SunMoonLake.html"
+						><img
+							src="main.png"
+							style="
+								height: 150px;
+								width: 150px;
+								position: absolute;
+								top: 50px;
+								z-index: 1;
+							"
+					/></a>
+				</div>
+				<div
+					class="word_right"
+					style="position: absolute; top: 80px; left: 500px"
+				>
+					<form>
+						<label style="color: rgb(114, 114, 114)"
+							>全球Lalu&emsp; |&emsp; 線上訂房&emsp; |&emsp; 線上購物&emsp;
+							|&emsp; 如何到涵碧樓&emsp; |&emsp; 聯絡我們&emsp;</label
+						>
+						<select id="name">
+							<option value="青島涵碧樓">青島涵碧樓</option>
+						</select>
+						<select id="language">
+							<option value="Chinese">中文</option>
+							<option value="English">英文</option>
+							<option value="Japanese">日文</option>
+						</select>
+					</form>
+					<div style="display: flex; justify-content: space-between">
+						<p id="one" style="cursor: pointer">涵碧春秋</p>
+						&emsp;
+						<p id="two" style="cursor: pointer">探索</p>
+						&emsp;
+						<p id="three" style="cursor: pointer">夜宿</p>
+						&emsp;
+						<p id="four" style="cursor: pointer">遊憩</p>
+						&emsp;
+						<p id="five" style="cursor: pointer">新訊</p>
+						&emsp;
+						<p id="six" style="cursor: pointer">婚禮</p>
+						&emsp;
+						<p id="seven" style="cursor: pointer">餐宴</p>
+						&emsp;
+						<p id="eight" style="cursor: pointer">SPA</p>
+						&emsp;
+						<p id="nine" style="cursor: pointer">精品</p>
+						&emsp;
+						<p id="ten" style="cursor: pointer">會員專屬</p>
+					</div>
+				</div>
+			</div>
+			<img class="title" id="first" src="first.png" />
+			<img class="title" id="second" src="second.jpg" style="display: none" />
+			<img class="title" id="third" src="third.png" style="display: none" />
+		</div>
+		<p style="color: rgb(114, 114, 114); text-align: center">
+			全球Lalu&emsp; |&emsp; 新訊&emsp; |&emsp; 住宿&emsp; |&emsp; 旅行&emsp;
+			|&emsp; 餐宴&emsp; |&emsp; SPA&emsp; |&emsp; 精品&emsp; |&emsp; 探索&emsp;
+			|&emsp; 會員專屬&emsp; |&emsp; 線上訂房&emsp; |&emsp; 線上購物&emsp;
+			|&emsp; 人才招募&emsp; |&emsp; 聯絡我們
+		</p>
+		<div class="bottom">
+			<div style="position: absolute; left: 20px">
+				<p style="color: rgb(82, 82, 82)">
+					123456789yeahyeahyeah
+					<a href="https://zh-tw.facebook.com/" target="_blank"
+						><img
+							src="fb.png"
+							style="
+								height: 30px;
+								width: 30px;
+								background: #3b5998;
+								color: white;
+							"
+					/></a>
+				</p>
+			</div>
+			<div
+				id="showTime"
+				style="color: rgb(82, 82, 82); position: absolute; right: 0px"
+			></div>
+		</div>
+	</body>
+</html>

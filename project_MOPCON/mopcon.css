@@ -1,0 +1,45 @@
+#header {
+	position: fixed;
+	width: 100%;
+	border-bottom: 2px solid gold;
+}
+h3 {
+	line-height: 50px;
+}
+
+.navbar-collapse-center {
+	display: flex;
+	justify-content: center;
+}
+.navbar-center {
+	display: inline-block;
+}
+.navbar-center li {
+	margin: 0px 30px 0px 30px;
+	display: inline-block;
+}
+#title img {
+	height: 300px;
+	width: 300px;
+	display: block;
+	margin: auto;
+}
+#present {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+#present img {
+	height: 300px;
+	width: 450px;
+	margin: 20px;
+}
+@media screen and (min-width: 750px) {
+	#title img {
+		height: 512px;
+		width: 512px;
+	}
+	#present img {
+		height: 300px;
+		width: 450px;
+	}
+}

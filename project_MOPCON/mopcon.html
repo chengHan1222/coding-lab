@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="mopcon.css" />
+		<script
+			type="text/javascript"
+			src="http://code.jquery.com/jquery-latest.js"
+		></script>
+	</head>
+	<body>
+		<div class="modal fade" id="ourteam">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">團隊陣容</h4>
+						<button type="button" class="close" data-dismiss="modal">
+							&times;
+						</button>
+					</div>
+					<div class="modal-body">
+						<h6>廖教授</h6>
+						<h6>梁士兵</h6>
+						<h6>黃隊長</h6>
+						<h6>鍾邊緣</h6>
+						<h6>請X睡X</h6>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+							Close
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<header class="navbar navbar-expand-sm bg-dark navbar-dark" id="header">
+			<div
+				class="collapse navbar-collapse navbar-collapse-center"
+				id="collapsibleNavbar"
+			>
+				<a class="navbar-brand" href="mopcon.html">MOPCON</a>
+				<ul class="navbar navbar-nav navbar-center">
+					<li class="nav-item">
+						<a class="nav-link" href="mopcon.html">首頁</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">主辦社群</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbardrop"
+							data-toggle="dropdown"
+							>實驗室介紹</a
+						>
+						<ul
+							class="dropdown-menu dropdown-menu-dark"
+							aria-labelledby="navbarDarkDropdownMenuLink"
+						>
+							<li><a class="dropdown-item" href="#">227</a></li>
+							<li><a class="dropdown-item" href="#">228</a></li>
+							<li><a class="dropdown-item" href="#">232</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="modal" data-target="#ourteam"
+							>團隊陣容</a
+						>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">贊助夥伴</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbardrop"
+							data-toggle="dropdown"
+							>歷年</a
+						>
+						<ul
+							class="dropdown-menu dropdown-menu-dark"
+							aria-labelledby="navbarDarkDropdownMenuLink"
+						>
+							<li><a class="dropdown-item" href="#">2020</a></li>
+							<li><a class="dropdown-item" href="#">2021</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="container-fluid bg-dark text-white">
+			<br />
+			<div class="text-center" id="title">
+				<img src="hello.png" />
+				<h1><strong>所以你是在KUA SHA XIAO</strong></h1>
+				<br />
+			</div>
+			<hr width="80%" style="border-bottom: 5px dashed rgb(0, 202, 0)" />
+			<div class="container" id="present">
+				<h3>堅持不找實驗室</h3>
+				<h4 style="color: #ffa">&nbsp;&nbsp;有指導老師就夠啦</h4>
+				<div class="row justify-content-around">
+					<img src="pic1.png" class="col-md-5 col-sm-8" />
+					<img src="pic2.png" class="col-md-5 col-sm-8" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

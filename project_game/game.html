@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>T-rex</title>
+		<link rel="stylesheet" href="game.css" />
+		<script
+			type="text/javascript"
+			src="http://code.jquery.com/jquery-latest.js"
+		></script>
+		<script>
+			var point = 0; // 全域分數
+			var life = true; // 生命
+			var t = 0; // 野怪位置
+			var starboolean = false; // star 可不可吃
+			var High = 0; // 最高分
+			var intval; // 開始物件
+
+			$(document).ready(function () {
+				// 鍵盤操控
+				$(document).keydown(function (event) {
+					switch (event.keyCode) {
+						case 37:
+							$("#T_rex").attr("src", "dinosaur-left.png");
+							$("#T_rex").animate({ left: "-=2%" }, "fast");
+							var at = $("#T_rex").css("left");
+							if (parseInt(at) < -42) {
+								$("#T_rex").css({ left: "-42px" }).animate({ left: "-39px" });
+								break;
+							}
+							break;
+						case 38:
+							$("#T_rex").animate({ top: "28%" });
+						case 39:
+							$("#T_rex").attr("src", "dinosaur-right.png");
+							$("#T_rex").animate({ left: "+=2%" }, "fast");
+							var at = $("#T_rex").css("left");
+							if (parseInt(at) > 830) {
+								$("#T_rex").css({ left: "830px" }).animate({ left: "825px" });
+								break;
+							}
+							break;
+						case 40:
+							$("#T_rex").animate({ top: "+=30px" });
+					}
+				});
+				$(document).keyup(function (event) {
+					switch (event.keyCode) {
+						case 37:
+							$("#T_rex").stop(true, true);
+							break;
+						case 39:
+							$("#T_rex").stop(true, true);
+							break;
+						case 40:
+							$("#T_rex").stop(true, true);
+							break;
+					}
+				});
+			});
+			// 遊戲開始
+			function start() {
+				point = 0;
+				$("#point").text(point);
+				starboolean = true;
+				life = true;
+				$("#T_rex")
+					.css({ top: "28%", left: "0%" })
+					.attr("src", "dinosaur-right.png");
+				$(".monster").css({ top: "123px", left: "0%" });
+				$("#star").css({ left: "10%" });
+				$("#game_start")
+					.css({ color: "gray", "background-color": "rgb(83, 83, 83)" })
+					.animate({
+						height: "560px",
+						width: "1400px",
+						left: "-=650px",
+						top: "-=200px",
+					});
+				$("#game_start").fadeOut(1000);
+				$("#dead").fadeOut().hide();
+				intval = setInterval("start_game();", 100);
+				Monster_out();
+			}
+			function start_game() {
+				Get_point();
+				bump();
+			}
+
+			// 野怪浮現
+			function Monster_out() {
+				window.setInterval(function () {
+					if (life) {
+						t = (t + 1) % 3;
+						var big1 = Random(80) + 50 + "px";
+						var big2 = Random(80) + 50 + "px";
+						var big3 = Random(80) + 50 + "px";
+						var at = [
+							Random(30) + 1 + "%",
+							Random(30) + 33 + "%",
+							Random(30) + 65 + "%",
+						];
+						var left1 = at[t];
+						var left2 = at[(t + 1) % 3];
+						var left3 = at[(t + 2) % 3];
+						$("#st").animate({
+							width: big1,
+							height: big1,
+						});
+						$("#st").animate({ left: left1 }, 3000);
+						$("#nd").css({
+							width: big2,
+							height: big2,
+						});
+						$("#nd").animate({ left: left2 }, 3000);
+						$("#rd").css({
+							width: big3,
+							height: big3,
+						});
+						$("#rd").animate({ left: left3 }, 3000);
+						$(".monster").animate({ top: "-=80px" });
+						$(".monster").animate({ top: "+=80px" }, 5000);
+					}
+				}, 10000);
+			}
+			// 計算隨機
+			function Random(x) {
+				return Math.floor(Math.random() * x);
+			}
+			// 撞猛獸
+			function bump() {
+				var dino_left = parseInt($("#T_rex").css("left"));
+				var dino_top = parseInt($("#T_rex").css("top"));
+				var dino_center = { x: dino_left + 35, y: dino_top + 35 };
+
+				var mon1_left = parseInt($("#st").css("left"));
+				var mon1_top = parseInt($("#st").css("top"));
+				var mon1_width = parseInt($("#st").css("width"));
+				var mon1_center = {
+					x: mon1_left + mon1_width / 2,
+					y: mon1_top + mon1_width / 2,
+				};
+
+				var mon2_left = parseInt($("#nd").css("left"));
+				var mon2_top = parseInt($("#nd").css("top"));
+				var mon2_width = parseInt($("#nd").css("width"));
+				var mon2_center = {
+					x: mon2_left + mon2_width / 2,
+					y: mon2_top + mon2_width / 2,
+				};
+
+				var mon3_left = parseInt($("#rd").css("left"));
+				var mon3_top = parseInt($("#rd").css("top"));
+				var mon3_width = parseInt($("#rd").css("width"));
+				var mon3_center = {
+					x: mon3_left + mon3_width / 2,
+					y: mon3_top + mon3_width / 2,
+				};
+
+				if (
+					Math.abs(dino_center.x - mon1_center.x) <= mon1_width / 2 + 35 &&
+					Math.abs(dino_center.y - mon1_center.y) <= mon1_width / 2 + 35 &&
+					life == true
+				) {
+					dead();
+				}
+				if (
+					Math.abs(dino_center.x - mon2_center.x) <= mon2_width / 2 + 35 &&
+					Math.abs(dino_center.y - mon2_center.y) <= mon2_width / 2 + 35 &&
+					life == true
+				) {
+					dead();
+				}
+				if (
+					Math.abs(dino_center.x - mon3_center.x) <= mon3_width / 2 + 35 &&
+					Math.abs(dino_center.y - mon3_center.y) <= mon3_width / 2 + 35 &&
+					life == true
+				) {
+					dead();
+				}
+			}
+			function dead() {
+				$("#T_rex").attr("src", "dino.png");
+				$(".monster").stop(true);
+				life = false;
+				$("#dead").show();
+				if (point > High) {
+					High = point;
+				}
+				$(".Hi").show();
+				$("#Hi").text(High);
+				clearInterval(intval);
+			}
+			// 得分判斷
+			function Get_point() {
+				if (life) {
+					var star_left = parseInt($("#star").css("left"));
+					var dino_left = parseInt($("#T_rex").css("left"));
+					var star_top = parseInt($("#star").css("top"));
+					var dino_top = parseInt($("#T_rex").css("top"));
+					var star_center = { x: star_left + 20, y: star_top + 20 };
+					var dino_center = { x: dino_left + 35, y: dino_top + 35 };
+					// 中心點距離小於寬度
+					if (
+						Math.abs(dino_center.x - star_center.x) <= 45 &&
+						Math.abs(dino_center.y - star_center.y) <= 45 &&
+						starboolean == true
+					) {
+						add_point();
+					}
+				}
+			}
+			// 加分
+			function add_point() {
+				point += 1;
+				$("#point").text(point);
+				starboolean = false;
+				starmove();
+			}
+			// 移動星星
+			function starmove() {
+				var newleft = Random(900) - 50;
+				var dino_left = parseInt($("#T_rex").css("left"));
+				while (Math.abs(dino_left - newleft) < 200) {
+					newleft = Random(900) - 50;
+				}
+				$("#star").animate({ left: newleft + "px" }, "fast");
+				starboolean = true;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="title">
+			<h1>Walking T-Rex</h1>
+			<h3>
+				1. Control your T-Rex... 2. Watch out the Spike... 3. Eat the
+				superstar...
+			</h3>
+			<h3>Use keyboard up down left right to move the T-Rex</h3>
+		</div>
+		<div id="game_block">
+			<button id="game_start" onclick="start();">start</button>
+			<div id="content">
+				<div id="dead">
+					<h3>Game over</h3>
+					<button id="back_btn" onclick="start();">
+						<img src="back.png" id="back_pic" />
+					</button>
+				</div>
+				<p
+					class="Hi"
+					style="position: absolute; top: 0%; right: 10%; display: none"
+				>
+					High <span id="Hi">0</span>
+				</p>
+				<p style="position: absolute; top: 0%; right: 0%">
+					your score <span id="point">0</span>
+				</p>
+				<img
+					src="dinosaur-right.png"
+					alt="I'm T-Rex"
+					title="吼~~~~"
+					id="T_rex"
+				/>
+				<img src="star.png" alt="star" title="亮晶晶" id="star" />
+				<hr
+					width="100%"
+					style="border-bottom: 5px solid gray; position: absolute; top: 107px"
+				/>
+				<img
+					src="monster.png"
+					alt="monster"
+					title="肉肉"
+					class="monster"
+					id="st"
+				/>
+				<img
+					src="monster.png"
+					alt="monster"
+					title="肉肉"
+					class="monster"
+					id="nd"
+				/>
+				<img
+					src="monster.png"
+					alt="monster"
+					title="肉肉"
+					class="monster"
+					id="rd"
+				/>
+			</div>
+		</div>
+	</body>
+</html>

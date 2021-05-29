@@ -3,6 +3,13 @@
 	width: 100%;
 	border-bottom: 2px solid gold;
 }
+#footer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	border-top: 2px solid gold;
+	color: aliceblue;
+}
 h3 {
 	line-height: 50px;
 }
@@ -32,6 +39,7 @@ h3 {
 	height: 300px;
 	width: 450px;
 	margin: 20px;
+	margin-bottom: 50px;
 }
 @media screen and (min-width: 750px) {
 	#title img {

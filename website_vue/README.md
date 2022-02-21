@@ -1,2 +1,3 @@
-新增 vue create '<name>'
-執行 npm run serve
+# notice
+ 新增 vue create '<name>'
+ 執行 npm run serve

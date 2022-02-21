@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DataTable test</title>
+
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
+
+		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+		<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+	</head>
+	<body>
+		<h1>Table is show down here</h1>
+
+		<table id="tableArray" class="dispaly" style="width: 100%">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>age</th>
+					<th>address</th>
+					<th>weight</th>
+					<th>position</th>
+				</tr>
+			</thead>
+		</table>
+	</body>
+
+	<script>
+		$(document).ready(() => {
+			$('#tableArray').DataTable({
+				
+				ajax: 'dataList.json',
+
+				columns: [
+					{
+						data: 'name',
+					},
+					{
+						data: 'age',
+					},
+					{
+						data: 'address',
+					},
+					{
+						data: 'weight',
+					},
+					{
+						data: 'position',
+					},
+				],
+			});
+		});
+	</script>
+</html>

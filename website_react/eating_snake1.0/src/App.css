@@ -1,0 +1,24 @@
+*{
+	margin-top: 10px;
+}
+.titleBlock {
+	text-align: center;
+}
+.titleBlock #startButton {
+	width: 100px;
+	height: 100px;
+	color: white;
+	background-color: red;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.titleBlock #startButton:hover {
+	background-color: rgb(255, 86, 86);
+}
+
+#canvasId {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="main.css" />
+
+		<script type="text/javascript" src="./js/Player.js"></script>
+		<script type="text/javascript" src="./js/Ethnicity.js"></script>
+		<script type="text/javascript" src="./js/warrior.js"></script>
+		<script type="text/javascript" src="./js/Archer.js"></script>
+		<script type="text/javascript" src="./js/Tank.js"></script>
+		<script type="text/javascript" src="./js/FightSystem.js"></script>
+		<script type="text/javascript" src="./js/PlayerCard.js"></script>
+	</head>
+	<body>
+		<div id="fightingMainBlock" class="fightingMainBlock">
+			<img src="./img/hearthStone.jpg" class="fightingBackground" />
+
+			<div id="putCardArea" class="putCard">
+				<div id="prohibitSide"></div>
+				<div id="safeSide"></div>
+			</div>
+
+			<div id="putCardBoard" class="putCard">
+				<div id="enemySide"></div>
+				<div id="ourSide"></div>
+			</div>
+
+			<input type="button" id="changePlayerTurn" value="END TURN" onclick="changePlayerTurn()" />
+
+			<div id="playerAttacker" class="player">
+				<img src="./img/player1.jpeg" />
+				<div class="playerBlood">30</div>
+			</div>
+			<div id="playerDefender" class="player defender">
+				<img src="./img/player2.jpg" />
+				<div class="playerBlood">30</div>
+			</div>
+		</div>
+
+		<div id="startGame" onclick="play()">&nbsp;▶</div>
+
+		<div id="chooseCard">
+			<h1>Player 1</h1>
+			<input type="button" value="下一位" onclick="changePlayerToChooseCard()" />
+		</div>
+
+		<img id="attackSword" src="img/sword.png" style="width: 100px; height: 150px; position: absolute; display: none"/>
+	</body>
+
+	<script type="text/javascript" src="./js/main.js"></script>
+</html>

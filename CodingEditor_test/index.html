@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>keyBoard</title>
+
+		<script>
+			var selectText = '';
+			var leftStart = 0;
+			var leftEnd = 0;
+            let text = "123abcdefg";
+
+			window.onload = () => {
+				let root = document.getElementById("root").children;
+				console.log(root);
+				console.log(root['h1']);
+
+
+                document.getElementById('input').value = text;
+				showText(text);
+				event.preventDefault();
+
+				document.getElementById('input').addEventListener('keydown', (event) => {
+					console.log(event.getModifierState('Alt'));
+
+					updateText(event.key);
+
+					showText(text);
+				});
+
+				var isMouseDown = false;
+
+				document.getElementById('input').onmousedown = function (e) {
+					isMouseDown = true;
+				};
+				document.getElementById('input').onmouseup = function (e) {
+					isMouseDown = false;
+				};
+				document.getElementById('input').onmousemove = function (e) {
+					if (isMouseDown) {
+						document.getElementById('selectWord').textContent = getText();
+						selectText = getText();
+					}
+				};
+			};
+
+			function getText() {
+				var selectText = document.getElementById('input');
+				leftStart = selectText.selectionEnd < selectText.selectionStart ? selectText.selectionEnd : selectText.selectionStart;
+				leftEnd = selectText.selectionEnd > selectText.selectionStart ? selectText.selectionEnd : selectText.selectionStart;
+
+				return selectText.value.substring(selectText.selectionStart, selectText.selectionEnd);
+			}
+
+			function updateText(newStr) {
+				switch (newStr) {
+					case 'Backspace':
+						if (selectText !== '') {
+							text = text.substring(0, leftStart) + text.substring(leftEnd, text.length);
+						} else {
+							let textLength = text.length - 1 < 0 ? 0 : text.length - 1;
+							text = text.substring(0, textLength);
+						}
+						break;
+					case 'Ctrl':
+						break;
+					default:
+						text += newStr;
+				}
+			}
+
+			function showText(text) {
+				document.getElementById('title').textContent = text;
+			}
+		</script>
+	</head>
+	<body>
+		<textarea id="input" cols="50" row="10"></textarea>
+		<h3 id="title"></h3>
+		<h4 id="selectWord"></h4>
+		<div id = "root">
+			<h1 id = "h3">2</h1>
+			<h1 id = "h2">3</h1>
+			<h1 id = "h1">123</h1>
+		</div>
+	</body>
+</html>

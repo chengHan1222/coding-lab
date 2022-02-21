@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<canvas id="canvasId"></canvas>
+	</body>
+
+	<script>
+		let canvas = document.getElementById('canvasId');
+		canvas.width = 700;
+		canvas.height = 700;
+		canvas.style.backgroundColor = '#75b7e3';
+		let ctx = canvas.getContext('2d');
+
+		window.onload = () => {
+			// ctx.fillStyle = 'yellow';
+			// ctx.fillRect(0, 10, 700, 300);
+			// house
+			ctx.fillStyle = '#f6e204';
+			ctx.fillRect(100, 500, 200, 200);
+
+			// roof
+			ctx.beginPath();
+			ctx.moveTo(50, 500);
+			ctx.lineTo(200, 370);
+			ctx.lineTo(350, 500);
+			ctx.closePath();
+			ctx.fillStyle = '#6a1a10';
+			ctx.fill();
+
+			// window
+			ctx.strockStyle = '#0173ab';
+			ctx.strokeRect(135, 540, 50, 50);
+
+			ctx.beginPath();
+			ctx.moveTo(135, 565);
+			ctx.lineTo(185, 565);
+			ctx.moveTo(160, 540);
+			ctx.lineTo(160, 590);
+			ctx.closePath();
+			ctx.strokeStyle = '0173ab';
+			ctx.stroke();
+
+			// door
+			ctx.strokeStyle = '#6a1a10';
+			ctx.strokeRect(215, 625, 30, 75);
+			ctx.strokeRect(245, 625, 30, 75);
+
+			ctx.fillStyle = '#ba2736';
+			ctx.beginPath();
+			ctx.arc(233, 655, 6, 0, Math.PI * 2);
+			ctx.arc(257, 655, 6, 0, Math.PI * 2);
+			ctx.fill();
+
+			// trunk
+			ctx.fillStyle = '#6b4224';
+			ctx.fillRect(550, 450, 150, 250);
+
+			ctx.beginPath();
+			ctx.arc(450, 620, 100, 0, 0.4 * Math.PI);
+			ctx.lineTo(570, 700);
+			ctx.closePath();
+			ctx.fill();
+
+			// tree
+			ctx.fillStyle = '#335617';
+			ctx.beginPath();
+			ctx.arc(625, 300, 250, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+
+			// apple
+			ctx.fillStyle = 'red';
+			ctx.beginPath();
+			ctx.arc(625, 170, 22, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(470, 300, 22, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(580, 420, 22, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+
+			// cloud
+			setInterval(drawCloud, 10);
+		};
+
+		let startPositionX = 80;
+		function drawCloud() {
+			ctx.clearRect(startPositionX - 45, 70, 215, 160);
+
+			ctx.fillStyle = '#fff';
+			ctx.beginPath();
+			ctx.arc(startPositionX, 150, 40, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(startPositionX + 40, 125, 45, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(startPositionX + 80, 125, 40, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(startPositionX + 120, 150, 45, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(startPositionX + 40, 175, 40, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(startPositionX + 80, 175, 45, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+
+			if (startPositionX > 200) {
+				if (startPositionX > 500) {
+					ctx.clearRect(startPositionX - 45, 70, 215, 160);
+					startPositionX = -160;
+					reDrawTree();
+					return;
+				}
+				reDrawTree();
+			}
+			startPositionX += 1;
+		}
+
+		function reDrawTree() {
+			ctx.fillStyle = '#335617';
+			ctx.beginPath();
+			ctx.arc(625, 300, 250, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+
+			ctx.fillStyle = 'red';
+			ctx.beginPath();
+			ctx.arc(625, 170, 22, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(470, 300, 22, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(580, 420, 22, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+		}
+	</script>
+</html>

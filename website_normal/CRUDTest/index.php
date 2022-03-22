@@ -103,13 +103,16 @@
 
 	function readData() {
 		const ajax = new XMLHttpRequest();
+
 		ajax.onload = () => {
 			// let response = () => {
 			// 	"use strict";
 			// 	return (ajax.response);
 			// };
 			// let get = response();
+			console.log(123);
 			let response = Function('"use strict";return (' + ajax.responseText + ')')();
+
 			console.log(response);
 			// document.getElementById('aaa').innerHTML += "\n" + ajax.responseText;
 		};

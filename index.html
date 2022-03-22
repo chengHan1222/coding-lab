@@ -1,0 +1,212 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Demo{
+            // id = "Original id"
+
+            get id(){
+                return this._id;
+            }
+            set id(newId){
+                this._id = newId;
+            }
+            
+            setId(){
+
+            }
+        }
+        // demo.id = ?
+
+
+
+        let demo = new Demo();
+        let demo2 = new Demo();
+        console.log('@', demo._id);
+        console.log(demo.id)
+        console.log(demo)
+
+        Object.defineProperty(demo2, "id", {
+            value: "New id"
+        })
+        console.log(demo2.id)
+        console.log(demo2)
+
+        Object.defineProperty(Demo.prototype, "id", {
+            value: "New id"
+        })
+        console.log('@' , delete(demo.id))
+        console.log(demo.id);
+        console.log(demo);
+        let demo3 = new Demo();
+        // console.log(demo3.id)
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+</head>
+<body>
+    <!-- 容器 -->
+    <div id="test"></div>
+
+    <!-- React 核心庫 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- React 拓展功能: 用於支持React與DOM溝通 -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- 語言翻譯: ES6 => ES5 ; jsx => js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel"> // type="text/babel" 一定要寫babel 
+
+        class vueblock{
+            isDeepChange = false;
+
+            get strColor(){
+                return this.vuestrColor;
+            }
+            set strColor(newColor){
+                this.vuestrColor = newColor;
+                this.isDeepChange = true;
+                // setState();
+            }
+
+            _arrColor = [];
+            _arrColor_updateFromFrontward = []
+            get arrColor(){
+                return this._arrColor;
+            }
+            set arrColor(newArrColor){
+                this._arrColor = newArrColor;
+                this.isDeepChange = true;
+                
+                for (let index = 0; index <= this._arrColor_updateFromFrontward.length; index++){
+                    this._arrColor_updateFromFrontward();
+                }
+                // setState();
+            }
+
+            setStrColor(newColor){
+                this.strColor = "blue"
+            }
+        }
+        // vueblock.strColor = "blue"
+
+        
+        class vueblock2{
+            isDeepChange = false;
+            arrColor = [];
+
+            getStrColor(){
+                return this.vuestrColor;
+            }
+            setStrColor(newColor){
+                this.vuestrColor = newColor;
+                this.isDeepChange = true;
+                // setState();
+            }
+
+            getArrColor(){
+                return this.arrColor;
+            }
+            setArrColor(newArrColor){
+                this.arrColor = newArrColor;
+                this.isDeepChange = true;
+            }
+        }
+        // vueblock.setStrColor("blue")
+
+
+        let v1 = new vueblock();
+        let v2 = new vueblock2();
+        console.log(v1.isDeepChange);
+        console.log(v2.isDeepChange);
+        v1.arrColor.push(1);
+        v1.arrColor = v1.arrColor;
+        
+        v2.getArrColor().push(1)
+        v2.setArrColor(v2.getArrColor());
+
+        console.log(v1.arrColor);
+        console.log(v2.getArrColor());
+        
+        console.log(v1.isDeepChange);
+        console.log(v2.isDeepChange);
+
+
+        class block{
+            strColor = "red";
+            nameList = {
+                name: "cc",
+                name2: "2"
+            };
+        }
+        let block1 = new block();
+        // this.setState({block { strColor: "blue" }})
+        
+        class Index extends React.Component {
+            state={
+                block1
+            }
+            componentDidMount(){
+            }
+            printData = ()=>{
+                console.log(this.state.block1)
+                let copy = {};
+                console.log(0 == "0")
+                Object.assign(copy, this.state.block1)
+                // console.log(copy);
+                // copy.strColor = "blue";
+                console.log(this.state.block1 == copy);
+                // this.setState({
+                //     block1: {
+                //         strColor: "blue",
+                        
+                //         nameList: {
+                //             name: "gin"
+                //         }
+                //     }
+                // });
+                // this.setState({});
+                setTimeout(()=>{
+                    
+                console.log(this.state.block1)
+                }, 1000)
+            }
+            render() {
+                
+                    
+                
+
+                return (
+                <div>
+                    <div>{this.state.block1.strColor}</div>
+                    <div>{this.state.block1.nameList.name}</div>
+                    <input type="button" value="test" onClick={this.printData}/>
+                </div>
+                )
+            }
+        }
+        
+
+        // 渲染 虛擬DOM 到頁面
+        ReactDOM.render(<Index/>, document.getElementById('test'));
+    </script>
+
+
+</body>
+</html>

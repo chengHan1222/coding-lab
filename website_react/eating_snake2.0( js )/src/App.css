@@ -1,0 +1,121 @@
+body {
+	background-color: black;
+	padding-left: 10px;
+	padding-top: 10px;
+	user-select: none;
+}
+button {
+	cursor: pointer;
+}
+.App {
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	align-items: center;
+}
+#start {
+	width: 40vw;
+}
+.gameTitle {
+	font-size: 2.2vw;
+	color: aliceblue;
+}
+
+.highScore {
+	color: rgb(255, 230, 0);
+	position: absolute;
+	left: 4%;
+	top: 5px;
+}
+
+.startEndButton {
+	width: 4rem;
+	height: 4rem;
+	color: aliceblue;
+	background-color: crimson;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.startEndButton:hover {
+	background-color: rgb(216, 97, 121);
+}
+.blueHover {
+	background-color: blue;
+}
+.blueHover:hover {
+	background-color: rgb(119, 119, 255);
+}
+.greenHover {
+	background-color: rgb(0, 117, 82);
+}
+.greenHover:hover {
+	background-color: rgb(102, 197, 169);
+}
+
+.keyInput {
+	width: auto;
+	margin-left: 10px;
+	font-size: 1vw;
+	display: inline-flex;
+	overflow: hidden;
+}
+.keyInput:focus {
+	color: red;
+}
+
+.gameMap {
+	max-width: 750px;
+	max-height: 750px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.blockFrame {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.singleBlock {
+	float: left;
+	padding: 0.5%;
+	box-sizing: border-box;
+}
+.singleBlock .block {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.singleBlock .block:hover {
+	background-color: rgb(252, 121, 121) !important;
+}
+
+.divMask {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(179, 179, 179, 0.363);
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.divMask .divMessage {
+	width: 32vw;
+	height: 24vh;
+	color: aliceblue;
+	background-color: rgb(92, 92, 92);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20%;
+	cursor: pointer;
+}
+.divMessage:hover {
+	background-color: rgb(138, 138, 138);
+}
+.divMessage h1 {
+	font-size: 45px;
+}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import GameController from './object/GameController';
 
-
 let gameInterval: NodeJS.Timer;
 
 new GameController();
@@ -17,35 +16,36 @@ export default function PlayEngine() {
 		GameController.initial();
 
 		setSnakeScore(GameController.snakesArray[0].score);
-	
+
 		gameInterval = setInterval(gameRoutine, 1000 / GameController.gameSpeed);
 	}
-	
-	
+
 	function gameRoutine(): void {
 		let snake = GameController.snakesArray[0]; // 多條蛇要更改
-	
+
 		GameController.moveSnake(snake);
-	
+
 		if (snake.isSnakeDie()) {
 			clearInterval(gameInterval);
 			return;
 		}
-	
+
 		if (snake.isSnakeEatApple()) {
 			snake.eatApple();
-	
-			setSnakeScore ((s) => s + 1);
+
+			setSnakeScore((s) => s + 1);
 		}
-	
+
 		updateCanvas();
 	}
 
 	return (
-		<div >
+		<div>
 			<div className="titleBlock">
-				<button id="startButton" onClick={gameStart}>Start</button>
-				<h1>{ snakeScore }</h1>
+				<button id="startButton" onClick={gameStart}>
+					Start
+				</button>
+				<h1>{snakeScore}</h1>
 			</div>
 			<canvas id="canvasId" width="400" height="400"></canvas>
 		</div>
@@ -54,7 +54,6 @@ export default function PlayEngine() {
 
 function updateCanvas(): void {
 	let canvas: any = document.getElementById('canvasId');
-	console.log(canvas);
 	let content = canvas.getContext('2d');
 
 	content.fillStyle = 'black';
@@ -84,5 +83,3 @@ function updateCanvas(): void {
 		GameController.MapBlockSize - 1
 	);
 }
-
-

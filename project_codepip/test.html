@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		.right {
+			display: none;
+		}
+		.left:hover + .right {
+			display: block;
+		}
+	</style>
+	<body>
+		<div id="zzsc">
+			<ul>
+				<li>
+					<a href="http://www.51qianduan.com//"><img src="images/1.jpg" /></a>
+					<div class="text">
+						<b>菜单导航</b>
+						<p>51前端，让开发更简单。</p>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.51qianduan.com//"><img src="images/2.jpg" /></a>
+					<div class="text">
+						<b>网页特效</b>
+						<p>51前端，让开发更简单。</p>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.51qianduan.com//"><img src="images/3.jpg" /></a>
+					<div class="text">
+						<b>网站模板</b>
+						<p>51前端，让开发更简单。</p>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.51qianduan.com//"><img src="images/4.jpg" /></a>
+					<div class="text">
+						<b>flash特效</b>
+						<p>51前端，让开发更简单。</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script>
+			$(function () {
+				$("#zzsc li").hover(
+					function () {
+						$(".text", this).stop().animate({
+							height: "165px",
+						});
+					},
+					function () {
+						$(".text", this).stop().animate({
+							height: "0",
+						});
+					}
+				);
+			});
+		</script>
+	</body>
+</html>
